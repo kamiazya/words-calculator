@@ -4,13 +4,18 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { MatCardModule } from '@angular/material/card';
+import { PredictComponent } from './pages/predict/predict.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PredictComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
