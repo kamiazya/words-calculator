@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: category-classifier-web-app
+  labels:
+    app: category-classifier-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: category-classifier-web-app
+  template:
+    metadata:
+      labels:
+        app: category-classifier-web-app
+    spec:
+      containers:
+      - name: category-classifier-web-app
+        image: category-classifier-web-app
+        # 生きてるかチェック
+        # コンテナそのものが立ち上がっているかどうかをチェックするもの
+        # livenessProbe:
+        #   # an http probe
+        #   httpGet:
+        #     path: /k8s/healthz
+        #     port: 3000
+        #     scheme: HTTP
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 1
+        # 動くか確認
+        # リクエスト受け付け準備が整っているかどうかをチェックするもの
+        # readinessProbe:
+        #   # an http probe
+        #   httpGet:
+        #     path: /k8s/readiness
+        #     port: 3000
+        #     scheme: HTTP
+        #   initialDelaySeconds: 20
+        #   timeoutSeconds: 5
+        ports:
+        - containerPort: 80

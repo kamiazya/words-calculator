@@ -11,6 +11,10 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatInputModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +23,8 @@ import { MatToolbarModule, MatButtonModule, MatInputModule, MatSidenavModule, Ma
   ],
   imports: [
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,

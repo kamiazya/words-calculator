@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: category-classifier-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+    ingress.kubernetes.io/secure-backends: "true"
+
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # Blocking HTTP
+    # You can block traffic on :80 through an annotation.
+    # You might want to do this if all your clients are only going to hit the loadbalancer
+    # through HTTPS and you don't want to waste the extra GCE forwarding rule
+    # > https://github.com/kubernetes/ingress-gce
+    kubernetes.io/ingress.allow-http: "false"
+
+spec:
+  tls:
+    - secretName: category-classifier-https-secret
+      hosts:
+        - app.category-classifier.localhost
+
+  rules:
+    - host: app.category-classifier.localhost
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: category-classifier-web-app-svc
+            servicePort: 80
+        - path: /api
+          backend:
+            serviceName: category-classifier-web-api-svc
+            servicePort: 5000

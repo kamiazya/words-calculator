@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: category-classifier-web-api
+    workspace: ./components/web-api
+  - imageName: category-classifier-web-app
+    workspace: ./components/web-app
+    docker:
+      buildArgs:
+        ENV: dev
+
+deploy:
+  kubectl:
+    manifests:
+    - ./k8s/*

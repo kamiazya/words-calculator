@@ -1,0 +1,5 @@
+h5py
+cython
+flask
+fasttext
+mecab-python3

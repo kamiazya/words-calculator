@@ -3,5 +3,7 @@
 </p>
 
 <mat-form-field class="full-width">
-  <textarea matInput placeholder="Leave a comment"></textarea>
+  <textarea matInput placeholder="企業情報" [formControl]="infoCtrl"></textarea>
 </mat-form-field>
+
+<pre>{{estimates$ | async | json}}</pre>
