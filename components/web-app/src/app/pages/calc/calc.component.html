@@ -1,0 +1,33 @@
+<mat-form-field>
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor="let word of words$ | async" [selectable]="true"
+             [removable]="true" (removed)="remove(word)"
+             selected
+             (click)="negaposi(word)"
+             [color]="(word.np === 'nega' ? 'primary' : 'accent')"
+             >
+      <span [ngSwitch]="word.np">
+        <ng-container *ngSwitchCase="'nega'">-</ng-container>
+        <ng-container *ngSwitchCase="'posi'">+</ng-container>
+      </span>
+      {{word.name}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New word..."
+           [matChipInputFor]="chipList"
+           (matChipInputTokenEnd)="add($event)"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+
+  </mat-chip-list>
+</mat-form-field>
+<p class="error" *ngIf="message !== ''">{{message}}</p>
+
+<div>
+  <mat-card
+    *ngFor="let result of results$ | async"
+  >
+    <span>{{result.word}}</span>
+    <mat-progress-bar mode="determinate" [value]="result.similarity * 100"></mat-progress-bar>
+  </mat-card>
+
+</div>

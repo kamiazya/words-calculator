@@ -3,3 +3,7 @@ cython
 flask
 fasttext
 mecab-python3
+gensim
+scipy
+numpy
+word2vec

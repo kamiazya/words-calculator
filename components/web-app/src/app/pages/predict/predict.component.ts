@@ -32,7 +32,7 @@ export class PredictComponent implements OnInit {
         }
         let params = new HttpParams();
         params = params.set('q', info);
-        sub = this.http.get('/api', { params }).subscribe((res) => {
+        sub = this.http.get('/api/predict', { params }).subscribe((res) => {
           this.estimates$.next(res['estimates']);
         });
       } else {

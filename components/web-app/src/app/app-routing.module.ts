@@ -2,15 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PredictComponent } from './pages/predict/predict.component';
+import { CalcComponent } from './pages/calc/calc.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'calc',
+    component: CalcComponent,
+  },
+  {
+    path: 'predict',
     component: PredictComponent,
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'calc',
   }
 ];
 

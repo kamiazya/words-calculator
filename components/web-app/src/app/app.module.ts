@@ -10,16 +10,20 @@ import { PredictComponent } from './pages/predict/predict.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatInputModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CalcComponent } from './pages/calc/calc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PredictComponent,
-    MainNavComponent
+    MainNavComponent,
+    CalcComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -35,6 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatListModule,
     MatInputModule,
+    MatChipsModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
